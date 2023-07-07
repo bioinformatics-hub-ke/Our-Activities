@@ -79,6 +79,7 @@ trim_galore [options] <filename(s)>
 trim_galore \
 --paired GSM461177_1_subsampled.fastqsanger  GSM461177_2_subsampled.fastqsanger \
 --quality 30 \
+--fastqc \
 --nextera \
 --output_dir results/clean_reads
 
