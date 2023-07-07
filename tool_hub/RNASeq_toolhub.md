@@ -56,10 +56,19 @@ multiqc [directory contain the fastq html reports]
 multiqc .
 ```
 * Trimming
-**Cutadapt**
+
+**Cutadapt** trims  adapter sequences, primers,and any unwanted sequence from your fastq data.
+
 ```
-###Cutadapt
+#Cutadapt basic syntax
 cutadapt -a AACCGGTT -o output.fastq input.fastq
+#The sample data used doesnt have adapters.But if the would contain adapters we would run cutadapt as follows
+
+cutadapt -a AACCGGTT -o GSM461177_1_trimmed.fastqsanger GSM461177_1_subsampled.fastqsanger
+
+#-a - sequence of adapter. Replace the AACCGGTT with the adapter sequence in your data
+# -o  the output for trimmed reads
+```
 
 ## TrimGalore
 trim_galore input.fastq
