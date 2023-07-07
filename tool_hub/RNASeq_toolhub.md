@@ -62,9 +62,9 @@ The input of these tools are FASTA/Q reads and the output is SAM/BAM files. Some
 
 - Bowtie2 - https://github.com/BenLangmead/bowtie2
 - SOAP - [http://gaow.github.io/genetic-analysis-software/s/soap/](http://gaow.github.io/genetic-analysis-software/s/soap/)
-- STAR -
-- HISAT -
-- TopHat -
+- STAR - https://github.com/alexdobin/STAR
+- HISAT - https://github.com/DaehwanKimLab/hisat2
+- TopHat -https://github.com/infphilo/tophat
 
 ```bash
 ## Bowtie2
