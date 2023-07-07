@@ -41,11 +41,17 @@ Another quality check is conducted using FastQC or multiQC tools to check if the
 Each of these tools have man pages to guide their installation and use. Here are the basic commands of the tools:
 
 ```bash
-## Fastqc
+## Fastqc basic syntax
 fastqc input.fastq
 
-## Multiqc
-multiqc input.fastq
+# To run quality check on all our sample datasets use wildcards(*) to select all files ending with .fastqsanger
+fastqc ./*.fastqsanger
+
+## Multiqc basic syntax
+multiqc [directory contain the fastq html reports]
+
+#If the reports are in the current working directory use
+multiqc .
 
 ## Cutadapt
 cutadapt -a AACCGGTT -o output.fastq input.fastq
