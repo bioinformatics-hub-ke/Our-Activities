@@ -70,7 +70,7 @@ cutadapt -a AACCGGTT -o GSM461177_1_trimmed.fastqsanger GSM461177_1_subsampled.f
 #-o  the output for trimmed reads
 ```
 
-**TrimGalore** is a perl wrapper around Cutadapt and FastQC.Thus it performs quality check after trimming using cutadapt utilities.
+**TrimGalore** is a perl wrapper around Cutadapt and FastQC.
 ```
 #Basic trimgalore syntax
 trim_galore [options] <filename(s)>
