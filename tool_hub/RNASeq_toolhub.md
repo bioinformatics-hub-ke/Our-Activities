@@ -10,7 +10,7 @@ RNASeq has become increasingly accessible and affordable in recent years, with a
 
 ## Datasets
 
-We will use a public dataset from the Galaxy RNASeq tutorial. We use the subsampled data for our steps, but the large datasets are also available for use. The datasets are in fastqsanger format, which is similar to fastq format
+We will use a public dataset from the [Galaxy RNASeq]( https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html) tutorial. We use the subsampled data for our steps, but the large datasets are also available for use. The datasets are in fastqsanger format, which is similar to fastq format
 
 ```bash
 ## You can use wget or curl to get the datasets. Or a for loop
