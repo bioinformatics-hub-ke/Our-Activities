@@ -115,15 +115,27 @@ Bowtie2 is a popular alignment tool in bioinformatics written by [Ben Langmead](
 It is designed to be fast and memory efficient. Bowtie2 is known to be good at aligning relatively long genomes for example,human genome.Before performing alignment,Bowtie2 builds an index of reference genome. The index allows for quick retrieval of reference sequences during alignment. 
 Bowtie2 uses Burrows-Wheeler Transform (BWT) algorithmn to align reads to the reference genome.Bowtie2 offers both local alignment and end to end alignment mode.To learn more on difference between local alignment and end to end alignment check bowtie github [repo](https://github.com/BenLangmead/bowtie2/blob/521c3230af6c068d7d9f68264db0f01cfb5f0cbb/MANUAL.markdown).
 
-**Installation**
+* Installation
+  
 Bowtie2 can be installed via various package managers. To install using [bioconda](https://anaconda.org/bioconda/bowtie2) use: 
 
 ```
 conda install -c bioconda bowtie2
 ```
- **Alignment using Bowtie2**
-```
 
+* Alignment using Bowtie2
+  
+```
+# Building a small index
+bowtie2-build example/reference/lambda_virus.fa example/index/lambda_virus
+
+# Building a large index
+bowtie2-build --large-index example/reference/lambda_virus.fa example/index/lambda_virus
+# Aligning unpaired reads
+bowtie2 -x example/index/lambda_virus -U example/reads/longreads.fq
+
+# Aligning paired reads
+bowtie2 -x example/index/lambda_virus -1 example/reads/reads_1.fq -2 example/reads/reads_2.fq
 
 ```
 **Advantages**
