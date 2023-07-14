@@ -157,7 +157,6 @@ bowtie2 -x ./references/drosophila_melanogaster \
 
 ```
 * Sample mapping statistics 
-
 ```
   1057657 reads; of these:
   1057657 (100.00%) were paired; of these:
