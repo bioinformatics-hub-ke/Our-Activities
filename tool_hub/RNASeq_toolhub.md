@@ -178,7 +178,9 @@ bowtie2 -x ./references/drosophila_melanogaster \
 **SOAP**
 
 **STAR**
+
 **HISAT2**
+
 **TopHat**
 
 ```bash
