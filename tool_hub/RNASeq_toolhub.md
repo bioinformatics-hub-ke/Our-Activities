@@ -175,7 +175,11 @@ bowtie2 -x ./references/drosophila_melanogaster \
 89.64% overall alignment rate
 ```
   
-**Advantages**
+**SOAP**
+
+**STAR**
+**HISAT2**
+**TopHat**
 
 ```bash
 ## Bowtie2
