@@ -126,6 +126,16 @@ conda install -c bioconda bowtie2
 * Alignment using Bowtie2
   
 ```
+#Downloading the drosophila melanogaster reference genome from Ensembl
+
+mkdir references
+cd references
+#dowloading the fasta & gtf files using curl command
+
+curl -O ftp://ftp.ensembl.org/pub/release-109/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz
+curl -O ftp://ftp.ensembl.org/pub/release-109/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.109.gtf.gz
+
+
 # Building a small index
 bowtie2-build example/reference/lambda_virus.fa example/index/lambda_virus
 
