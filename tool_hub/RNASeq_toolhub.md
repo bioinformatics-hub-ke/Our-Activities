@@ -221,13 +221,13 @@ done
 
 hisat2 is a fast and sensitive splice-aware aligner that compresses the genome using an indexing scheme to reduce the amount of space needed to store the genome. This also makes the genome quick to search, using a whole-genome index.We use samtools to convert the output file from mapping to bam format and to index the bam files.Indexing creates a searchable index of sorted bam files required in some programs. 
 
-* nstalling Hisat2 using bioconda
+* Installing Hisat2 using bioconda
 
 ```
 conda install -c bioconda hisat2
 ```
 
-* Building a reference genome index
+* Mapping
   
 It is important to note that hisat2 requires an **unzipped reference genome** for building an index.
 
