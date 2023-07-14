@@ -209,6 +209,27 @@ done
 ```
 
 **HISAT2**
+hisat2 is a fast and sensitive splice-aware aligner that compresses the genome using an indexing scheme to reduce the amount of space needed to store the genome. This also makes the genome quick to search, using a whole-genome index.We use samtools to convert the output file from mapping to bam format and to index the bam files.Indexing creates a searchable index of sorted bam files required in some programs.
+
+```
+wget https://vectorbase.org/common/downloads/Current_Release/AgambiaePEST/fasta/data/VectorBase-53_AgambiaePEST_AnnotatedCDSs.fasta
+
+#Building a reference genome index
+hisat2-build -p25 ./VectorBase-53_AgambiaePEST_AnnotatedCDSs.fasta  ../hisat-index/VectorBase-53_AgambiaePEST.idx
+
+#Run hisat2 using indexed reference
+mkdir Alignment_hisat
+for i in $(cat ../SraAccList.txt);
+do
+   echo ${i}
+   hisat2 -p25 -x ../hisat-index/VectorBase-53_AgambiaePEST.idx\
+               -1 ${i}_1.fastq.gz -2 ${i}_2.fastq.gz\
+               -S Alignment_hisat/${i}_hisat.sam
+   samtools view -Sb Alignment_hisat/${i}_hisat.sam  | samtools sort  > Alignment_hisat/${i}_hisat_sorted.bam
+   samtools index Alignment_hisat/${i}_hisat_sorted.bam
+   rm Alignment_hisat/${i}_hisat.sam 
+done
+```
 
 **TopHat**
 
