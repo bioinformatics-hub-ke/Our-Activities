@@ -136,16 +136,25 @@ curl -O ftp://ftp.ensembl.org/pub/release-109/fasta/drosophila_melanogaster/dna/
 curl -O ftp://ftp.ensembl.org/pub/release-109/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.109.gtf.gz
 
 
-# Building a small index
-bowtie2-build example/reference/lambda_virus.fa example/index/lambda_virus
+!/bin/bash
 
-# Building a large index
-bowtie2-build --large-index example/reference/lambda_virus.fa example/index/lambda_virus
+# Building an index
+bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz ./references/drosophila_melanogaster
+
+#Incase of single/unpaired reads
 # Aligning unpaired reads
-bowtie2 -x example/index/lambda_virus -U example/reads/longreads.fq
+#bowtie2 -x ./reference/drosophila_melanogaster  -U example/reads/longreads.fq
 
 # Aligning paired reads
-bowtie2 -x example/index/lambda_virus -1 example/reads/reads_1.fq -2 example/reads/reads_2.fq
+bowtie2 -x ./references/drosophila_melanogaster \
+-1 GSM461177_1_subsampled.fastqsanger,GSM461180_1_subsampled.fastqsanger \
+-2 GSM461177_2_subsampled.fastqsanger,GSM461180_2_subsampled.fastqsanger
+
+#-x prefix for the index files of the reference genome
+#-U list of unpaired files separated by a comma to be mapped
+#-1 comma-separated list of forward reads(reads_1.fq)
+#-2 comma-separated list of reverse reads(reads_2.fq)
+
 
 ```
 **Advantages**
