@@ -147,13 +147,15 @@ bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz .
 
 # Aligning paired reads
 bowtie2 -x ./references/drosophila_melanogaster \
--1 GSM461177_1_subsampled.fastqsanger,GSM461180_1_subsampled.fastqsanger \
--2 GSM461177_2_subsampled.fastqsanger,GSM461180_2_subsampled.fastqsanger
+-1 GSM461177_1_subsampled.fastqsanger \
+-2 GSM461177_2_subsampled.fastqsanger \
+-S GSM461177.sam
 
 #-x prefix for the index files of the reference genome
 #-U list of unpaired files separated by a comma to be mapped
 #-1 comma-separated list of forward reads(reads_1.fq)
 #-2 comma-separated list of reverse reads(reads_2.fq)
+#-S 
 
 ```
 * Sample mapping statistics 
@@ -183,6 +185,11 @@ STAR Aligner(Spliced Transcripts Alignment to a Reference)
 
 STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed. Alignemnt in STAR involves two steps;
 
+* Installation using bioconda
+  
+```
+conda install -c bioconda star
+```
 *Creating genome index
 
 ```
@@ -214,24 +221,27 @@ done
 hisat2 is a fast and sensitive splice-aware aligner that compresses the genome using an indexing scheme to reduce the amount of space needed to store the genome. This also makes the genome quick to search, using a whole-genome index.We use samtools to convert the output file from mapping to bam format and to index the bam files.Indexing creates a searchable index of sorted bam files required in some programs.
 
 ```
-wget https://vectorbase.org/common/downloads/Current_Release/AgambiaePEST/fasta/data/VectorBase-53_AgambiaePEST_AnnotatedCDSs.fasta
-
 #Building a reference genome index
-hisat2-build -p25 ./VectorBase-53_AgambiaePEST_AnnotatedCDSs.fasta  ../hisat-index/VectorBase-53_AgambiaePEST.idx
+mkdir hisat-map
+hisat2-build -p25 ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz ./hisat-map/Drosophila_melanogaster.idx
 
 #Run hisat2 using indexed reference
+
 mkdir Alignment_hisat
-for i in $(cat ../SraAccList.txt);
-do
-   echo ${i}
-   hisat2 -p25 -x ../hisat-index/VectorBase-53_AgambiaePEST.idx\
-               -1 ${i}_1.fastq.gz -2 ${i}_2.fastq.gz\
-               -S Alignment_hisat/${i}_hisat.sam
-   samtools view -Sb Alignment_hisat/${i}_hisat.sam  | samtools sort  > Alignment_hisat/${i}_hisat_sorted.bam
-   samtools index Alignment_hisat/${i}_hisat_sorted.bam
-   rm Alignment_hisat/${i}_hisat.sam 
+hisat2 -p25 -x ./hisat-map/Drosophila_melanogaster.idx \
+-1 GSM461177_1_subsampled.fastqsanger \
+-2 GSM461177_2_subsampled.fastqsanger \
+-S GSM461177_hisat.sam \
+
+#Converting sam to bam files since sam files are quite huge
+
+samtools view -Sb GSM461177_hisat.sam | samtools sort  > GSM461177_hisat_sorted.bam
+samtools index GSM461177_hisat_sorted.bam
+rm GSM461177_hisat.sam 
 done
+
 ```
+
 
 **TopHat**
 
