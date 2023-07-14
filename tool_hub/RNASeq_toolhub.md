@@ -178,6 +178,35 @@ bowtie2 -x ./references/drosophila_melanogaster \
 **SOAP**
 
 **STAR**
+STAR Aligner(Spliced Transcripts Alignment to a Reference)
+
+STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed.Alignemnt in STAR involves two steps;
+
+*Creating genome index
+
+```
+STAR --runThreadN 6  # number of threads\
+    --runMode genomeGenerate \
+    --genomeDir ./starr #path to store genome indices\
+    --genomeFastaFiles VectorBase-53_AgambiaePEST_Genome.fasta \
+    --sjdbGTFfile VectorBase-53_AgambiaePEST.gff \
+    --sjdbOverhang 99 #readlength-1 --sjdbGTFtagExonParentTranscript gene
+```
+* Mapping reads to the genome
+
+```
+mkdir alignments
+for i in $(cat SraAcclist.txt);
+do
+    STAR --genomeDir starr \
+    --readFilesIn  ${i}_1.fastq.gz ${i}_2.fastq.gz\
+    --readFilesCommand zcat  \
+    --outSAMtype BAM SortedByCoordinate \
+    --quantMode GeneCounts \
+    --outFileNamePrefix alignments/${i}
+done
+#zcat decompress the files
+```
 
 **HISAT2**
 
