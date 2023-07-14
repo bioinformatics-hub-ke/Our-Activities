@@ -155,8 +155,27 @@ bowtie2 -x ./references/drosophila_melanogaster \
 #-1 comma-separated list of forward reads(reads_1.fq)
 #-2 comma-separated list of reverse reads(reads_2.fq)
 
+```
+* Sample mapping statistics 
 
 ```
+  1057657 reads; of these:
+  1057657 (100.00%) were paired; of these:
+    204963 (19.38%) aligned concordantly 0 times
+    721322 (68.20%) aligned concordantly exactly 1 time
+    131372 (12.42%) aligned concordantly >1 times
+    ----
+    204963 pairs aligned concordantly 0 times; of these:
+      46878 (22.87%) aligned discordantly 1 time
+    ----
+    158085 pairs aligned 0 times concordantly or discordantly; of these:
+      316170 mates make up the pairs; of these:
+        219095 (69.30%) aligned 0 times
+        87581 (27.70%) aligned exactly 1 time
+        9494 (3.00%) aligned >1 times
+89.64% overall alignment rate
+```
+  
 **Advantages**
 
 ```bash
