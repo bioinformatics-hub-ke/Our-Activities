@@ -222,6 +222,7 @@ done
 hisat2 is a fast and sensitive splice-aware aligner that compresses the genome using an indexing scheme to reduce the amount of space needed to store the genome. This also makes the genome quick to search, using a whole-genome index.We use samtools to convert the output file from mapping to bam format and to index the bam files.Indexing creates a searchable index of sorted bam files required in some programs. 
 
 * Building a reference genome index
+  
 It is important to note that hisat2 requires an **unzipped reference genome** for building an index.
 
 ```
@@ -251,24 +252,8 @@ rm GSM461177_hisat.sam
 done
 
 ```
-* Mapping statistics
-```
-1057657 reads; of these:
-  1057657 (100.00%) were paired; of these:
-    198859 (18.80%) aligned concordantly 0 times
-    754621 (71.35%) aligned concordantly exactly 1 time
-    104177 (9.85%) aligned concordantly >1 times
-    ----
-    198859 pairs aligned concordantly 0 times; of these:
-      4822 (2.42%) aligned discordantly 1 time
-    ----
-    194037 pairs aligned 0 times concordantly or discordantly; of these:
-      388074 mates make up the pairs; of these:
-        253835 (65.41%) aligned 0 times
-        122370 (31.53%) aligned exactly 1 time
-        11869 (3.06%) aligned >1 times
-88.00% overall alignment rate
-```
+
+
 
 **TopHat**
 
