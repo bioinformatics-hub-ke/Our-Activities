@@ -158,7 +158,10 @@ bowtie2 -x ./references/drosophila_melanogaster \
 #-S 
 
 ```
-* Sample mapping statistics 
+* Sample mapping statistics
+
+The percentage of mapped reads is an important alignment quality indicator.An overall alignment rate of 70% and above is generally good.
+
 ```
   1057657 reads; of these:
   1057657 (100.00%) were paired; of these:
@@ -181,13 +184,16 @@ bowtie2 -x ./references/drosophila_melanogaster \
 
 STAR Aligner(Spliced Transcripts Alignment to a Reference)
 
-STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed. Alignment in STAR involves two steps;
-
+STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed. 
 * Installation using bioconda
   
 ```
 conda install -c bioconda star
 ```
+
+Alignment in STAR involves two steps;
+
+
 * Creating genome index
 
 ```
@@ -261,7 +267,10 @@ done
 
 **TopHat**
 
+
 **Splice-aware Alignment Tools**
+
+
 
 **Memory & Time considerations**
 
