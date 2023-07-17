@@ -176,8 +176,6 @@ bowtie2 -x ./references/drosophila_melanogaster \
         9494 (3.00%) aligned >1 times
 89.64% overall alignment rate
 ```
-  
-**SOAP**
 
 **STAR**
 
@@ -258,21 +256,16 @@ rm GSM461177_hisat.sam
 done
 
 ```
-
+**SOAP**
 
 
 **TopHat**
+**Splice-aware Alignment Tools**
+**Memory & Time considerations**
 
-```bash
-## Bowtie2
 
-## SOAP
 
-## STAR
 
-## HISAT2
 
-## TopHat
-```
 
 ### 3. Analysis of the deferentially expressed genes
