@@ -260,7 +260,9 @@ done
 
 
 **TopHat**
+
 **Splice-aware Alignment Tools**
+
 **Memory & Time considerations**
 
 
