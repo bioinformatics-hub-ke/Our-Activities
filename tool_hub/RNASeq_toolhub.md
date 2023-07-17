@@ -190,7 +190,7 @@ STAR is a splice aware aligner designed to specifically address many of the chal
 ```
 conda install -c bioconda star
 ```
-*Creating genome index
+* Creating genome index
 
 ```
 STAR --runMode genomeGenerate \
