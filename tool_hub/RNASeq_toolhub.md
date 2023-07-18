@@ -262,7 +262,7 @@ rm GSM461177_hisat.sam
 done
 
 ```
-**TopHat**
+**TopHat2**
 
 TopHat is bioinformatics tool designed for mapping RNA seq reads.It is able to handle splice junctions present in RNA-Seq reads. The [TopHat]( https://github.com/DaehwanKimLab/tophat/blob/master/AUTHORS) tool was written by Cole Trapnell and further developed by Daehwan Kim and Geo Pertea
 leading to the release of TopHat2.
