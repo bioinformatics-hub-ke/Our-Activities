@@ -273,7 +273,7 @@ TopHat2 aligns reads to the reference genome using Bowtie2 then analyzes the map
 ```
 conda install -c bioinfo tophat2
 ```
-* Alignmnet using TopHat2
+* Alignment using TopHat2
 Inorder to perform alignment using TopHat2 you will require the Bowtie2 and Samtools in your environment.Both tools can be installed using [bioconda](https://anaconda.org/bioconda/)
 
 ```
