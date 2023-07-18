@@ -267,6 +267,15 @@ done
 
 **TopHat**
 
+TopHat is bioinformatics tool designed for mapping RNA seq reads.It is able to handle splice junctions present in RNA-Seq reads. The [TopHat]( https://github.com/DaehwanKimLab/tophat/blob/master/AUTHORS) tool was written by [Cole Trapnell] and further developed by Daehwan Kim and Geo Pertea
+leading to the release of TopHat2.
+TopHat2 aligns reads to the reference genome using Bowtie2 then analyzes the mapping results to identify splice junctions.The tool can be run Linux, macOS, and Windows systems. 
+* Installing TopHat2 using bioconda
+
+```
+conda install -c bioconda tophat
+```
+* 
 
 **Splice-aware Alignment Tools**
 
