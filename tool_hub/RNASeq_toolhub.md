@@ -262,7 +262,11 @@ rm GSM461177_hisat.sam
 done
 
 ```
-**SOAP**
+**SOAPAligner**
+
+```
+conda install -c bioconda soapaligner
+```
 
 
 **TopHat**
