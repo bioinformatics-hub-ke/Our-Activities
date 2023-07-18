@@ -291,9 +291,13 @@ samtools sort -n file_tophat_out/accepted_hits.bam_sorted
 # -n 
 ```
 **SOAPAligner**
-
+* Installing SOAPAligner
 ```
 conda install -c bioconda soapaligner
+```
+* Alignment
+
+```
 soap reference.index short_reads.fast[a|q] alignment.out [options]
 soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.output>  [-2
        <unpaired.output>] [options]
@@ -303,6 +307,7 @@ soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.ou
 **Memory & Time considerations during Mapping**
 
 Mapping run time solely depends on the size of datasets as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
+
 Dataset: Human genome & mammals
 
 | Tool    | Memory footprint |
