@@ -288,19 +288,6 @@ samtools sort -n tophat_out/accepted_hits.bam_sorted
 #–no-coverage-search
 # -n indicates sort by read names
 ```
-**SOAPAligner**
-* Installing SOAPAligner
-```
-conda install -c bioconda soapaligner
-```
-* Alignment
-
-```
-soap reference.index short_reads.fast[a|q] alignment.out [options]
-soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.output>  [-2
-       <unpaired.output>] [options]
-
-```
 
 **Memory & Time considerations during Mapping**
 
