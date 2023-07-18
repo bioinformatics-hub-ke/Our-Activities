@@ -199,26 +199,24 @@ Alignment in STAR involves two steps;
 ```
 STAR --runMode genomeGenerate \
 --genomeDir ./starr #path to store genome indices\
---genomeFastaFiles VectorBase-53_AgambiaePEST_Genome.fasta \
---sjdbGTFfile VectorBase-53_AgambiaePEST.gff \
---sjdbOverhang 99 #readlength-1 --sjdbGTFtagExonParentTranscript gene
+--genomeFastaFiles Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa \
+--sjdbGTFfile Drosophila_melanogaster.BDGP6.32.109.gtf \
+--sjdbOverhang 99 #readlength-1 \
+--sjdbGTFtagExonParentTranscript gene
 
 #You can specify number of threads using --runThreadN 6  # number of threads
 ```
 * Mapping reads to the genome
 
 ```
-mkdir alignments
-for i in $(cat SraAcclist.txt);
-do
-    STAR --genomeDir starr \
-    --readFilesIn  ${i}_1.fastq.gz ${i}_2.fastq.gz\
-    --readFilesCommand zcat  \
-    --outSAMtype BAM SortedByCoordinate \
-    --quantMode GeneCounts \
-    --outFileNamePrefix alignments/${i}
-done
-#zcat decompress the files
+STAR \
+--genomeDir ./starr \
+--readFilesIn  GSM461177_1_subsampled.fastqsanger GSM461177_2_subsampled.fastqsanger \
+--outSAMtype BAM SortedByCoordinate \
+--quantMode GeneCounts \
+--outFileNamePrefix GSM461177
+
+
 ```
 
 **HISAT2**
@@ -284,11 +282,11 @@ bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz .
 # Basic syntax for running TopHat2
 
 tophat2 -o tophat_output –no-coverage-search /path/to/genome/Bowtie2Index/genome file_1.fastq file_2.fastq
-samtools sort -n file_tophat_out/accepted_hits.bam_sorted
+samtools sort -n tophat_out/accepted_hits.bam_sorted
 
 #-o output directory
 #–no-coverage-search
-# -n 
+# -n indicates sort by read names
 ```
 **SOAPAligner**
 * Installing SOAPAligner
@@ -306,7 +304,7 @@ soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.ou
 
 **Memory & Time considerations during Mapping**
 
-Mapping run time solely depends on the size of datasets as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
+Mapping run time depends on the size of datasets, number of processors/threads as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
 
 Dataset: Human genome & mammals
 
