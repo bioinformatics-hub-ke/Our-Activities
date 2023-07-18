@@ -262,13 +262,6 @@ rm GSM461177_hisat.sam
 done
 
 ```
-**SOAPAligner**
-
-```
-conda install -c bioconda soapaligner
-```
-
-
 **TopHat**
 
 TopHat is bioinformatics tool designed for mapping RNA seq reads.It is able to handle splice junctions present in RNA-Seq reads. The [TopHat]( https://github.com/DaehwanKimLab/tophat/blob/master/AUTHORS) tool was written by [Cole Trapnell] and further developed by Daehwan Kim and Geo Pertea
@@ -292,7 +285,15 @@ tophat2 -o tophat_output_dir –no-coverage-search /path/to/genome/Bowtie2Index/
 samtools sort -n file_tophat_out/accepted_hits.bam_sorted
 
 ```
+**SOAPAligner**
 
+```
+conda install -c bioconda soapaligner
+soap reference.index short_reads.fast[a|q] alignment.out [options]
+soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.output>  [-2
+       <unpaired.output>] [options]
+
+```
 **Splice-aware Alignment Tools**
 
 
