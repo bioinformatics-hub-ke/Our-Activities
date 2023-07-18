@@ -301,16 +301,16 @@ soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.ou
 ```
 
 **Memory & Time considerations during Mapping**
-Mapping run time solely depends on the size of datasets as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
-Dataset: Human genome
 
-| Tool    | Memory Usage |
+Mapping run time solely depends on the size of datasets as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
+Dataset: Human genome & mammals
+
+| Tool    | Memory footprint |
 | ----------- | ----------- |
-| Bowtie2   |       |
-| SOAP |         |
-| STAR |      |
-| HISAT |       |
-| TopHat |        |
+| Bowtie2   |   3.2 GB     |
+| STAR |   16 GB  |
+| HISAT | 6.7 GB   |
+
 
 
 
