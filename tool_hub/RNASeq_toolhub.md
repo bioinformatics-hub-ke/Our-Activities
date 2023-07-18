@@ -281,9 +281,14 @@ Inorder to perform alignment using TopHat2 you will require the Bowtie2 and Samt
 
 bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz ./references/drosophila_melanogaster
 
-tophat2 -o tophat_output_dir –no-coverage-search /path/to/genome/Bowtie2Index/genome file_1.fastq file_2.fastq
+# Basic syntax for running TopHat2
+
+tophat2 -o tophat_output –no-coverage-search /path/to/genome/Bowtie2Index/genome file_1.fastq file_2.fastq
 samtools sort -n file_tophat_out/accepted_hits.bam_sorted
 
+#-o output directory
+#–no-coverage-search
+# -n 
 ```
 **SOAPAligner**
 
@@ -294,14 +299,24 @@ soap -D <in.fasta.index> -a <query.file.a> [-b <query.file.b>] -o  <alignment.ou
        <unpaired.output>] [options]
 
 ```
-**Splice-aware Alignment Tools**
+
+**Memory & Time considerations during Mapping**
+Mapping run time solely depends on the size of datasets as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
+Dataset: Human genome
+
+| Tool    | Memory Usage |
+| ----------- | ----------- |
+| Bowtie2   |       |
+| SOAP |         |
+| STAR |      |
+| HISAT |       |
+| TopHat |        |
 
 
 
-**Memory & Time considerations**
 
 
-
+  
 
 
 
