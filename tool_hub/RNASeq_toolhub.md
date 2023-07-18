@@ -291,7 +291,7 @@ samtools sort -n tophat_out/accepted_hits.bam_sorted
 
 **Memory & Time considerations during Mapping**
 
-Mapping run time depends on the size of datasets, number of processors/threads as well as the alignment tool chosen.Here we provide the tools memory footprint as documented in github pages.
+Mapping run time depends on the size of datasets, number of processors/threads as well as the alignment tool chosen.Here we provide the memory footprint of three mapping tools as documented in github pages.
 
 Dataset: Human genome & mammals
 
