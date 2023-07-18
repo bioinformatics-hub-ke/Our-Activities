@@ -277,16 +277,16 @@ TopHat2 aligns reads to the reference genome using Bowtie2 then analyzes the map
 conda install -c bioinfo tophat2
 ```
 * Alignmnet using TopHat2
-Inorder to perform alignment using TopHat2 you will require the following tools in your environment.
-
-- Bowtie2
+Inorder to perform alignment using TopHat2 you will require the Bowtie2 and Samtools in your environment.Both tools can be installed using [bioconda](https://anaconda.org/bioconda/)
 
 ```
-conda install -c bioconda bowtie2
-```
-- Samtools
-```
-conda install -c bioconda samtools
+# Building index for reference genome
+
+bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz ./references/drosophila_melanogaster
+
+tophat2 -o tophat_output_dir –no-coverage-search /path/to/genome/Bowtie2Index/genome file_1.fastq file_2.fastq
+samtools sort -n file_tophat_out/accepted_hits.bam_sorted
+
 ```
 
 **Splice-aware Alignment Tools**
