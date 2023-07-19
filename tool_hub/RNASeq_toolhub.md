@@ -158,7 +158,10 @@ bowtie2 -x ./references/drosophila_melanogaster \
 #-S 
 
 ```
-* Sample mapping statistics 
+* Sample mapping statistics
+
+The percentage of mapped reads is an important alignment quality indicator.An overall alignment rate of 70% and above is generally good.
+
 ```
   1057657 reads; of these:
   1057657 (100.00%) were paired; of these:
@@ -176,45 +179,44 @@ bowtie2 -x ./references/drosophila_melanogaster \
         9494 (3.00%) aligned >1 times
 89.64% overall alignment rate
 ```
-  
-**SOAP**
 
 **STAR**
 
 STAR Aligner(Spliced Transcripts Alignment to a Reference)
 
-STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed. Alignment in STAR involves two steps;
-
+STAR is a splice aware aligner designed to specifically address many of the challenges of RNA-seq data.It shows high accuracy and mapping speed. 
 * Installation using bioconda
   
 ```
 conda install -c bioconda star
 ```
-*Creating genome index
+
+Alignment in STAR involves two steps;
+
+
+* Creating genome index
 
 ```
 STAR --runMode genomeGenerate \
 --genomeDir ./starr #path to store genome indices\
---genomeFastaFiles VectorBase-53_AgambiaePEST_Genome.fasta \
---sjdbGTFfile VectorBase-53_AgambiaePEST.gff \
---sjdbOverhang 99 #readlength-1 --sjdbGTFtagExonParentTranscript gene
+--genomeFastaFiles Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa \
+--sjdbGTFfile Drosophila_melanogaster.BDGP6.32.109.gtf \
+--sjdbOverhang 99 #readlength-1 \
+--sjdbGTFtagExonParentTranscript gene
 
 #You can specify number of threads using --runThreadN 6  # number of threads
 ```
 * Mapping reads to the genome
 
 ```
-mkdir alignments
-for i in $(cat SraAcclist.txt);
-do
-    STAR --genomeDir starr \
-    --readFilesIn  ${i}_1.fastq.gz ${i}_2.fastq.gz\
-    --readFilesCommand zcat  \
-    --outSAMtype BAM SortedByCoordinate \
-    --quantMode GeneCounts \
-    --outFileNamePrefix alignments/${i}
-done
-#zcat decompress the files
+STAR \
+--genomeDir ./starr \
+--readFilesIn  GSM461177_1_subsampled.fastqsanger GSM461177_2_subsampled.fastqsanger \
+--outSAMtype BAM SortedByCoordinate \
+--quantMode GeneCounts \
+--outFileNamePrefix GSM461177
+
+
 ```
 
 **HISAT2**
@@ -258,21 +260,54 @@ rm GSM461177_hisat.sam
 done
 
 ```
+**TopHat2**
 
+TopHat is bioinformatics tool designed for mapping RNA seq reads.It is able to handle splice junctions present in RNA-Seq reads. The [TopHat]( https://github.com/DaehwanKimLab/tophat/blob/master/AUTHORS) tool was written by Cole Trapnell and further developed by Daehwan Kim and Geo Pertea
+leading to the release of TopHat2.
+TopHat2 aligns reads to the reference genome using Bowtie2 then analyzes the mapping results to identify splice junctions.The tool can be run Linux, macOS, and Windows systems. 
 
+* Installing TopHat2 using bioconda
 
-**TopHat**
-
-```bash
-## Bowtie2
-
-## SOAP
-
-## STAR
-
-## HISAT2
-
-## TopHat
 ```
+conda install -c bioinfo tophat2
+```
+* Alignment using TopHat2
+Inorder to perform alignment using TopHat2 you will require the Bowtie2 and Samtools in your environment.Both tools can be installed using [bioconda](https://anaconda.org/bioconda/)
+
+```
+# Building index for reference genome
+
+bowtie2-build ./references/Drosophila_melanogaster.BDGP6.32.dna.toplevel.fa.gz ./references/drosophila_melanogaster
+
+# Basic syntax for running TopHat2
+
+tophat2 -o tophat_output –no-coverage-search /path/to/genome/Bowtie2Index/genome file_1.fastq file_2.fastq
+samtools sort -n tophat_out/accepted_hits.bam_sorted
+
+#-o output directory
+#–no-coverage-search
+# -n indicates sort by read names
+```
+
+**Memory & Time considerations during Mapping**
+
+Mapping run time depends on the size of datasets, number of processors/threads as well as the alignment tool chosen.Here we provide the memory footprint of three mapping tools as documented in github pages.
+
+Dataset: Human genome & mammals
+
+| Tool    | Memory footprint |
+| ----------- | ----------- |
+| Bowtie2   |   3.2 GB     |
+| STAR |   16 GB  |
+| HISAT | 6.7 GB   |
+
+
+
+
+
+
+  
+
+
 
 ### 3. Analysis of the deferentially expressed genes
