@@ -79,3 +79,32 @@ The input of these tools are FASTA/Q reads and the output is SAM/BAM files. Some
 ```
 
 ### 3. Analysis of the deferentially expressed genes
+
+This step shows how genes exhibit notable differences in expression levels between various conditions or experimental groups.
+Some of the important aspects of this step include:
+  - Understanding biological processes, like molecular mechanisms, that drive such differences between conditions
+  - Biomarker discovery, which could be genes having a unique association  with a particular condition or disease
+  - Prioritizing genes for further functional analysis such as gene ontology, pathway analysis, or network analysis
+  
+There are several tools used in doing differential gene expression analysis. The choice of the tool will depend on the study design, sample size, data distribution, and specific analysis requirements.
+The following are some common tools used in this step. Primarily, the input to these tools is the RNASeq read count data, and most tools are R package tools; 
+- DESeq2 - https://github.com/mikelove/DESeq2
+- edgeR - https://rdrr.io/github/OliverVoogd/edgeR/
+- limma - https://rdrr.io/bioc/limma/
+- sleuth - https://rdrr.io/github/pachterlab/sleuth/
+- NOISeq - https://rdrr.io/bioc/NOISeq/
+- DEXSeq - https://github.com/areyesq89/DEXSeq
+
+``` R
+## DESeq2
+
+## edgeR
+
+## limma
+
+## sleuth
+
+## NOISeq
+
+## DEXSeq
+```
