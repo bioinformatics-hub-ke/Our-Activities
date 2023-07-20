@@ -302,7 +302,7 @@ Dataset: Human genome & mammals
 | HISAT | 6.7 GB   |
 
 
-### 3.Feature counting
+###  3.Feature counting
 
 Once you have your aligned reads,the next step is to count number of reads that mapped to each gene/feature.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a table containing gene-ids,sample_id and counts.This table will be used downstream for differential expression analysis.
 
