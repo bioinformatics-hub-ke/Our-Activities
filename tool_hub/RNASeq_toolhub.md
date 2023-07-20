@@ -302,6 +302,20 @@ Dataset: Human genome & mammals
 | HISAT | 6.7 GB   |
 
 
+### 3.Feature counting
+
+Once you have your aligned reads,the next step is to count number of reads that mapped to each feature.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a csv file containing gene-ids,sample_id and counts.
+
+* Tools for feature counting
+  - htseq
+  - featurescount
+
+**HTseq count**
+
+```
+htseq-count -t exon -i gene_id -f bam *._hisat_sorted.bam  VectorBase-53_AgambiaePEST.gff > htseq/counts.txt
+```
+**Featurescount**
 
 
 
