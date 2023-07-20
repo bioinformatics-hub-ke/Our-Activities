@@ -304,18 +304,30 @@ Dataset: Human genome & mammals
 
 ### 3.Feature counting
 
-Once you have your aligned reads,the next step is to count number of reads that mapped to each feature.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a csv file containing gene-ids,sample_id and counts.
+Once you have your aligned reads,the next step is to count number of reads that mapped to each gene/feauture.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a table containing gene-ids,sample_id and counts.This table will be used downstream for differential expression analysis.
 
 * Tools for feature counting
-  - htseq
-  - featurescount
+  - htseq - https://github.com/htseq/htseq
+  - featurescount : 
 
-**HTseq count**
+**HTSeq **
+HTseq is a python library for analysis of High Throughput sequencing data. Htseq count is script in HTSeq used to quantify reads aligned to a feature in alignment files(sam or bam).htseq-count takes in the alignment file and an annotation file(gff or gtf) and outputs a table containing read counts for each feature in the annotation file.
 
+An important consideration to be made at this step is how to deal with reads that align to more than one feature. htseq-count allows you to select between the three [modes](https://htseq.readthedocs.io/en/master/htseqcount.html#htseqcount) ; union,intersection-strict and intersection-nonempty.
+
+
+* Installation
+  ```
+  #Using bioconda
+  conda install -c bioconda htseq
+* Basic syntax
+  
 ```
 htseq-count -t exon -i gene_id -f bam *._hisat_sorted.bam  VectorBase-53_AgambiaePEST.gff > htseq/counts.txt
+
 ```
-**Featurescount**
+**featuresCount**
+
 
 
 
