@@ -308,7 +308,7 @@ Once you have your aligned reads,the next step is to count number of reads that 
 
 * Tools for feature counting
   - htseq - https://github.com/htseq/htseq
-  - featurescount : 
+  - featurescount - https://doi.org/10.1093/bioinformatics/btt656
 
 **HTSeq**
 
