@@ -369,10 +369,11 @@ conda install -c bioconda subread
 featureCounts [options] -a <annotation_file> -o <output_file> input_file1 [input_file2]
 #!/bin/bash
 #Running featurescount
-featureCounts  -a Drosophila_melanogaster.BDGP6.32.109.gtf  -o GSM461177 GSM461177_hisat_sorted.bam 
+featureCounts -p -a Drosophila_melanogaster.BDGP6.32.109.gtf  -o GSM461177 GSM461177_hisat_sorted.bam 
 
-#-a -name of annotation file(gff/gtf)
-#-o -name of output file
+#-a name of annotation file(gff/gtf)
+#-p specifies that our reads contain paired-end reads
+#-o name of output file
 #input_file1 list of sam or bam files
 ```
 
