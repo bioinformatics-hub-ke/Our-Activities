@@ -317,9 +317,12 @@ HTseq is a python library for analysis of High Throughput sequencing data. Htseq
 An important consideration to be made at this step is how to deal with reads that align to more than one feature. htseq-count allows you to select between the three [modes](https://htseq.readthedocs.io/en/master/htseqcount.html#htseqcount) ; union,intersection-strict and intersection-nonempty.
 
 * Installation
+
   ```
   #Using bioconda
   conda install -c bioconda htseq
+  ```
+  
 * Basic syntax
   
 ```
@@ -348,9 +351,26 @@ htseq-count -t exon -i gene_id -f bam GSM461177_hisat_sorted.bam Drosophila_mela
  ```
 
 **featuresCount**
+featureCounts is a program developed as part of Subread software package. The program counts number of reads that map to a genomic feature. featureCounts takes in an annotation file(gff) and alignments files(bam) then it computes counts and generates a count table. 
 
+* Installation
+```
+#Using bioconda
 
+conda install -c bioconda subread
+```
+* Basic syntax
 
+```
+featureCounts [options] -a <annotation_file> -o <output_file> input_file1 [input_file2]
+#!/bin/bash
+#Running featurescount
+featureCounts  -a Drosophila_melanogaster.BDGP6.32.109.gtf  -o GSM461177 GSM461177_hisat_sorted.bam 
+
+#-a -name of annotation file(gff/gtf)
+#-o -name of output file
+#input_file1 list of sam or bam files
+```
 
 
   
