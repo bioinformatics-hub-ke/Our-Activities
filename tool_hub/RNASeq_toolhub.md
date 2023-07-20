@@ -304,18 +304,18 @@ Dataset: Human genome & mammals
 
 ### 3.Feature counting
 
-Once you have your aligned reads,the next step is to count number of reads that mapped to each gene/feauture.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a table containing gene-ids,sample_id and counts.This table will be used downstream for differential expression analysis.
+Once you have your aligned reads,the next step is to count number of reads that mapped to each gene/feature.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a table containing gene-ids,sample_id and counts.This table will be used downstream for differential expression analysis.
 
 * Tools for feature counting
   - htseq - https://github.com/htseq/htseq
   - featurescount : 
 
 **HTSeq **
+
 HTseq is a python library for analysis of High Throughput sequencing data. Htseq count is script in HTSeq used to quantify reads aligned to a feature in alignment files(sam or bam).htseq-count takes in the alignment file and an annotation file(gff or gtf) and outputs a table containing read counts for each feature in the annotation file.
 
 An important consideration to be made at this step is how to deal with reads that align to more than one feature. htseq-count allows you to select between the three [modes](https://htseq.readthedocs.io/en/master/htseqcount.html#htseqcount) ; union,intersection-strict and intersection-nonempty.
-
-
+I
 * Installation
   ```
   #Using bioconda
@@ -323,9 +323,30 @@ An important consideration to be made at this step is how to deal with reads tha
 * Basic syntax
   
 ```
-htseq-count -t exon -i gene_id -f bam *._hisat_sorted.bam  VectorBase-53_AgambiaePEST.gff > htseq/counts.txt
+htseq-count [options] <alignment_files> <gtf_file>
+
+#!/bin/bash
+# Running htseq-count  on aligned reads 
+
+htseq-count -t exon -i gene_id -f bam GSM461177_hisat_sorted.bam Drosophila_melanogaster.BDGP6.32.109.gtf > htseq_GSM461177_counts.txt
+
+# -t feature type(For ensemble gtf use exon)
+# -i gff attribute to be used as feature id
+# -f type of alignment data
 
 ```
+* Sample feature counts table
+
+  ```
+    FBgn0263343	0
+    FBgn0263344	0
+    FBgn0263345	0
+    FBgn0263346	106
+    FBgn0263351	79
+    FBgn0263352	311
+    FBgn0263353	1
+ ```
+
 **featuresCount**
 
 
