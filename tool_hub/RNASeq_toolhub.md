@@ -155,7 +155,7 @@ bowtie2 -x ./references/drosophila_melanogaster \
 #-U list of unpaired files separated by a comma to be mapped
 #-1 comma-separated list of forward reads(reads_1.fq)
 #-2 comma-separated list of reverse reads(reads_2.fq)
-#-S 
+#-S output in sam format
 
 ```
 * Sample mapping statistics
