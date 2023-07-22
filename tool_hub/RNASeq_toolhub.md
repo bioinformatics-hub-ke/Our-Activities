@@ -155,7 +155,7 @@ bowtie2 -x ./references/drosophila_melanogaster \
 #-U list of unpaired files separated by a comma to be mapped
 #-1 comma-separated list of forward reads(reads_1.fq)
 #-2 comma-separated list of reverse reads(reads_2.fq)
-#-S 
+#-S output in sam format
 
 ```
 * Sample mapping statistics
@@ -302,12 +302,84 @@ Dataset: Human genome & mammals
 | HISAT | 6.7 GB   |
 
 
+###  3. Feature counting
 
+Once you have your aligned reads,the next step is to count number of reads that mapped to each gene/feature.A feature is an interval on a chromosome.The input is the bam files generated from mapping step and the output is a table containing gene-ids,sample_id and counts.This table will be used downstream for differential expression analysis.
 
+* Tools for feature counting
+  - htseq - https://github.com/htseq/htseq
+  - featurescount - https://doi.org/10.1093/bioinformatics/btt656
+
+**HTSeq**
+
+HTseq is a python library for analysis of High Throughput sequencing data. Htseq count is script in HTSeq used to quantify reads aligned to a feature in alignment files(sam or bam).htseq-count takes in the alignment file and an annotation file(gff or gtf) and outputs a table containing read counts for each feature in the annotation file.
+
+An important consideration to be made at this step is how to deal with reads that align to more than one feature. htseq-count allows you to select between the three [modes](https://htseq.readthedocs.io/en/master/htseqcount.html#htseqcount) ; union,intersection-strict and intersection-nonempty.
+
+* Installation
+
+  ```
+  #Using bioconda
+  conda install -c bioconda htseq
+  ```
+  
+* Basic syntax
+  
+```
+htseq-count [options] <alignment_files> <gtf_file>
+
+#!/bin/bash
+# Running htseq-count  on aligned reads 
+
+htseq-count -t exon -i gene_id -f bam GSM461177_hisat_sorted.bam Drosophila_melanogaster.BDGP6.32.109.gtf > htseq_GSM461177_counts.txt
+
+# -t feature type(For ensemble gtf use exon)
+# -i gff attribute to be used as feature id
+# -f type of alignment data
+
+```
+
+* Sample feature counts table
+
+ ```
+    FBgn0263343	0
+    FBgn0263344	0
+    FBgn0263345	0
+    FBgn0263346	106
+    FBgn0263351	79
+    FBgn0263352	311
+    FBgn0263353	1
+ ```
+
+**featuresCount**
+
+featureCounts is a program developed as part of Subread software package. The program counts number of reads that map to a genomic feature. featureCounts takes in an annotation file(gff) and alignments files(bam) then it computes counts and generates a count table. 
+
+* Installation
+
+```
+#Using bioconda
+
+conda install -c bioconda subread
+```
+
+* Basic syntax
+
+```
+featureCounts [options] -a <annotation_file> -o <output_file> input_file1 [input_file2]
+#!/bin/bash
+#Running featurescount
+featureCounts -p -a Drosophila_melanogaster.BDGP6.32.109.gtf  -o GSM461177 GSM461177_hisat_sorted.bam 
+
+#-a name of annotation file(gff/gtf)
+#-p specifies that our reads contain paired-end reads
+#-o name of output file
+#input_file1 list of sam or bam files
+```
 
 
   
 
 
 
-### 3. Analysis of the deferentially expressed genes
+### 4. Analysis of the deferentially expressed genes
