@@ -1,4 +1,7 @@
-# Genome assembly tutorial 
+
+# Genome assembly 
+
+Genome assembly is like solving a giant DNA puzzle. In this tutorial, we'll show you how to piece together the genetic code of living organisms using raw DNA data. It's like uncovering the secrets of life hidden within tiny molecules. Whether you're a curious beginner or a budding scientist, we'll guide you through the exciting process of turning scattered genetic pieces into a complete picture. Let's embark on this scientific adventure together and explore the incredible world of genomics!
 
 In this tutorial, we will perform the assembly of Escherichia coli str. K-12 substr. W3110. Data is obtained from the study published in 2020 by Bleichert P et al., in Appl Environ Microbiol, 2020 Dec 17;87(1).
 
@@ -86,19 +89,19 @@ You should see a summary of stats about your assembly.
 **Quast Report**
 
 Assembly                    scaffolds
-# contigs (>= 0 bp)         116      
-# contigs (>= 1000 bp)      62       
-# contigs (>= 5000 bp)      53       
-# contigs (>= 10000 bp)     49       
-# contigs (>= 25000 bp)     45       
-# contigs (>= 50000 bp)     30       
+contigs (>= 0 bp)         116      
+contigs (>= 1000 bp)      62       
+contigs (>= 5000 bp)      53       
+contigs (>= 10000 bp)     49       
+contigs (>= 25000 bp)     45       
+contigs (>= 50000 bp)     30       
 Total length (>= 0 bp)      4577414  
 Total length (>= 1000 bp)   4558637  
 Total length (>= 5000 bp)   4539510  
 Total length (>= 10000 bp)  4505373  
 Total length (>= 25000 bp)  4435770  
 Total length (>= 50000 bp)  3904856  
-# contigs                   72       
+contigs                   72       
 Largest contig              364193   
 Total length                4564990  
 GC (%)                      50.77    
@@ -106,7 +109,7 @@ N50                         130538
 N75                         70023    
 L50                         11       
 L75                         23       
-# N's per 100 kbp           6.57
+N's per 100 kbp           6.57
 
 
 Additionally, you can download the file quast_spades_report/report.html and view it in your own web browser.
@@ -244,4 +247,4 @@ Similarly, you can check the information of each assembly by running the followi
 
 ### Acknowledgement 
 
-We acknowledge the organises of the EpiCass Project in developing this tutorial. 
+We acknowledge the organises of the [EpiCass Project](https://www.andreasgisel.com/EpiCass) in developing this tutorial. 
